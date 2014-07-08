@@ -258,11 +258,13 @@ static void do_aux_switch_function(int8_t ch_function, uint8_t ch_flag)
 
         case AUX_SWITCH_SONAR:
             // enable or disable the sonar
+#if CONFIG_SONAR == ENABLED
             if (ch_flag == AUX_SWITCH_HIGH) {
-                g.sonar_enabled = true;
+                sonar_enabled = true;
             }else{
-                g.sonar_enabled = false;
+                sonar_enabled = false;
             }
+#endif
             break;
 
 #if AC_FENCE == ENABLED
