@@ -61,13 +61,21 @@ void AP_MotorsOctaQuad::setup_motors()
         add_motor(AP_MOTORS_MOT_8, -135, AP_MOTORS_MATRIX_YAW_FACTOR_CCW, 6);
     }else{
         // X frame set-up
-        add_motor(AP_MOTORS_MOT_1,   45, AP_MOTORS_MATRIX_YAW_FACTOR_CCW, 1);
-        add_motor(AP_MOTORS_MOT_2,  -45, AP_MOTORS_MATRIX_YAW_FACTOR_CW,  7);
-        add_motor(AP_MOTORS_MOT_3, -135, AP_MOTORS_MATRIX_YAW_FACTOR_CCW, 5);
-        add_motor(AP_MOTORS_MOT_4,  135, AP_MOTORS_MATRIX_YAW_FACTOR_CW,  3);
-        add_motor(AP_MOTORS_MOT_5,  -45, AP_MOTORS_MATRIX_YAW_FACTOR_CCW, 8);
-        add_motor(AP_MOTORS_MOT_6,   45, AP_MOTORS_MATRIX_YAW_FACTOR_CW,  2);
-        add_motor(AP_MOTORS_MOT_7,  135, AP_MOTORS_MATRIX_YAW_FACTOR_CCW, 4);
-        add_motor(AP_MOTORS_MOT_8, -135, AP_MOTORS_MATRIX_YAW_FACTOR_CW,  6);
+        add_motor(AP_MOTORS_MOT_1,   45, AP_MOTORS_MATRIX_YAW_FACTOR_CCW, (uint8_t)1, AP_MOTORS_MATRIX_COAX_UPPER);
+        add_motor(AP_MOTORS_MOT_2,  -45, AP_MOTORS_MATRIX_YAW_FACTOR_CW,  (uint8_t)7, AP_MOTORS_MATRIX_COAX_UPPER);
+        add_motor(AP_MOTORS_MOT_3, -135, AP_MOTORS_MATRIX_YAW_FACTOR_CCW, (uint8_t)5, AP_MOTORS_MATRIX_COAX_UPPER);
+        add_motor(AP_MOTORS_MOT_4,  135, AP_MOTORS_MATRIX_YAW_FACTOR_CW,  (uint8_t)3, AP_MOTORS_MATRIX_COAX_UPPER);
+        // lower motors will spin contra to top in normal config, or in same direction in new non-contra X8 config
+        if ( _flags.frame_orientation == AP_MOTORS_X_FRAME_NON_CONTRA) {
+            add_motor(AP_MOTORS_MOT_5,  -45, AP_MOTORS_MATRIX_YAW_FACTOR_CW,  (uint8_t)8, AP_MOTORS_MATRIX_COAX_LOWER);
+            add_motor(AP_MOTORS_MOT_6,   45, AP_MOTORS_MATRIX_YAW_FACTOR_CCW, (uint8_t)2, AP_MOTORS_MATRIX_COAX_LOWER);
+            add_motor(AP_MOTORS_MOT_7,  135, AP_MOTORS_MATRIX_YAW_FACTOR_CW,  (uint8_t)4, AP_MOTORS_MATRIX_COAX_LOWER);
+            add_motor(AP_MOTORS_MOT_8, -135, AP_MOTORS_MATRIX_YAW_FACTOR_CCW, (uint8_t)6, AP_MOTORS_MATRIX_COAX_LOWER);
+        } else {
+            add_motor(AP_MOTORS_MOT_5,  -45, AP_MOTORS_MATRIX_YAW_FACTOR_CCW, (uint8_t)8, AP_MOTORS_MATRIX_COAX_LOWER);
+            add_motor(AP_MOTORS_MOT_6,   45, AP_MOTORS_MATRIX_YAW_FACTOR_CW,  (uint8_t)2, AP_MOTORS_MATRIX_COAX_LOWER);
+            add_motor(AP_MOTORS_MOT_7,  135, AP_MOTORS_MATRIX_YAW_FACTOR_CCW, (uint8_t)4, AP_MOTORS_MATRIX_COAX_LOWER);
+            add_motor(AP_MOTORS_MOT_8, -135, AP_MOTORS_MATRIX_YAW_FACTOR_CW,  (uint8_t)6, AP_MOTORS_MATRIX_COAX_LOWER);
+        }
     }
 }

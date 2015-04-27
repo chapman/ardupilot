@@ -44,6 +44,7 @@
 #define AP_MOTORS_NEW_X_FRAME       11
 #define AP_MOTORS_NEW_V_FRAME       12
 #define AP_MOTORS_NEW_H_FRAME       13   // same as X frame but motors spin in opposite direction
+#define AP_MOTORS_X_FRAME_NON_CONTRA 14  // same as X frame for octa-quad, but lower motors spin same direction as upper rather than contra
 
 // motor update rate
 #define AP_MOTORS_SPEED_DEFAULT     490 // default output rate to the motors
