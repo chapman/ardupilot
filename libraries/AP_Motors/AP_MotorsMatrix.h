@@ -57,9 +57,6 @@ public:
     // add coax motor with parameter to identify upper or lower differential mixing
     void                add_motor_coax(int8_t motor_num, float angle_degrees, float yaw_factor, uint8_t testing_order, int8_t coax_orientation);    
 
-    // add coax motor with parameter to identify upper or lower differential mixing
-    void                add_motor_coax(int8_t motor_num, float angle_degrees, float yaw_factor, uint8_t testing_order, int8_t coax_orientation);    
-
     // remove_motor
     void                remove_motor(int8_t motor_num);
 

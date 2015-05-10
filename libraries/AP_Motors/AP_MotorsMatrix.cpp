@@ -448,16 +448,6 @@ void AP_MotorsMatrix::add_motor_coax(int8_t motor_num, float angle_degrees, floa
     }
 }
 
-// in a coax setup, need to keep track of which are upper or lower for differential mixing
-void AP_MotorsMatrix::add_motor_coax(int8_t motor_num, float angle_degrees, float yaw_factor, uint8_t testing_order, int8_t coax_orientation)
-{
-    add_motor(motor_num, angle_degrees, angle_degrees, yaw_factor, testing_order);
-
-    if( motor_num >= 0 && motor_num < AP_MOTORS_MAX_NUM_MOTORS ) {
-        _coax_orientation[motor_num] = coax_orientation;
-    }
-}
-
 // remove_motor - disabled motor and clears all roll, pitch, throttle factors for this motor
 void AP_MotorsMatrix::remove_motor(int8_t motor_num)
 {
